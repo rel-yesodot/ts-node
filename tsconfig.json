@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    /* Module system configuration - core ESM setup */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    
+    /* Allows importing using "import './file.ts'" instead of requiring "./file.js".
+       Important for good DX when using tsx / esbuild. */
+    "allowImportingTsExtensions": true, 
+
+    /* tsc is used only for type checking — no output emitted.
+       tsx/esbuild handle runtime/build output. */
+    "noEmit": true,
+
+    /* Modern recommended settings */
+    "target": "ES2022", // Compatible with current LTS Node versions
+    "verbatimModuleSyntax": true, // Prevents module import guessing; modern recommended setting
+    "isolatedModules": true, // Required for esbuild/tsx
+    "esModuleInterop": true, // Enables interop with CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+
+    /* Strictness */
+    "strict": true,
+    "skipLibCheck": true, // Skip type checking of third-party libraries for faster builds
+
+    /* Output (used only when tsc --build is invoked manually) */
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"] // Alias mapping example
+    }
+  },
+
+  /* Include only source TypeScript files */
+  "include": ["src/**/*.ts"],
+
+  /* Exclude build output & dependencies */
+  "exclude": ["node_modules", "dist"]
+}
